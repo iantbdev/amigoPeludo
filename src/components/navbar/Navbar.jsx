@@ -1,98 +1,96 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import "./navbar.scss";
+import DogShield from "../../../public/shield-dog-solid.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faFacebook,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Navbar = () => {
   return (
-    <div className="navbar">
-      <div class="logo">
-        {/* <img src="img/paw-solid.svg" alt=""> */}
-        <span>AMIGO PELUDO </span>
-      </div>
-      <nav class="menu navbar navbar-expand-md navbar-light">
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light"
+      aria-label="Ninth navbar example"
+    >
+      <div className="container-xl">
+        <img
+          src={DogShield}
+          alt="Logo"
+          style={{ width: "40px", height: "40px", marginRight: "10px" }}
+        />
+        <a className="navbar-brand" href="#">
+          Amigo Peludo
+        </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
+          data-bs-target="#navbarsExample07XL"
+          aria-controls="navbarsExample07XL"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"> </span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a href="index.html" class="nav-link">
-                HOME
+        <div className="collapse navbar-collapse" id="navbarsExample07XL">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">
+                Home
               </a>
             </li>
-            <li class="nav-item">
-              <a href="loja.html" class="nav-link">
-                LOJA
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Loja
               </a>
             </li>
-            <li class="nav-item">
-              <a href="faq.html" class="nav-link">
-                FAQ
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Faq
               </a>
             </li>
-            <li class="nav-item">
-              <a href="agendamento.html" class="nav-link">
-                AGENDAMENTO
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Agendamento
               </a>
             </li>
-            <li class="nav-item">
-              <a href="contato.html" class="nav-link">
-                CONTATO
-              </a>
-            </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdown"
-                role="button"
+                id="dropdown07XL"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                CONTA
+                Conta
               </a>
-
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu" aria-labelledby="dropdown07XL">
                 <li>
-                  <a class="dropdown-item" href="conta.html">
-                    Dados Pessoais
+                  <a className="dropdown-item" href="#">
+                    Action
                   </a>
                 </li>
-
                 <li>
-                  <a class=" dropdown-item" href="#">
-                    Carrinho
+                  <a className="dropdown-item" href="#">
+                    Another action
                   </a>
                 </li>
-                <li>{/* <hr class="dropdown-divider"> */}</li>
                 <li>
-                  <a class="dropdown-item" onclick="logout()">
-                    Logout
+                  <a className="dropdown-item" href="#">
+                    Something else here
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item" id="login">
-              <a href="login.html" class="nav-link">
-                LOGIN
-              </a>
-            </li>
-            <li class="nav-item" id="cadastro">
-              <a href="registro.html" class="botao btn btn-outline-primary">
-                INSCREVA-SE
-              </a>
-            </li>
           </ul>
+          <form>
+            <button className="botao btn btn-outline-primary">Login</button>
+          </form>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 
