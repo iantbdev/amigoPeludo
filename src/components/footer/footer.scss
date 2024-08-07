@@ -6,39 +6,30 @@ footer {
   margin-top: 120px;
   background-color: whitesmoke;
 
-  nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+  a {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
 
-    a {
-      text-decoration: none;
-      margin-right: 20px;
-      font-size: 20px;
-      font-weight: 500;
-      transition: color 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
 
-      &:last-child {
-        margin-right: 0;
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      &.twitter {
+        color: #1da1f2;
       }
 
-      .social-icon {
-        font-size: 24px;
-        margin: 0 10px;
+      &.instagram {
+        color: #e95950;
+      }
 
-        &:hover {
-          &.twitter {
-            color: #1da1f2;
-          }
-
-          &.instagram {
-            color: #e95950;
-          }
-
-          &.facebook {
-            color: #3b5998;
-          }
-        }
+      &.facebook {
+        color: #3b5998;
       }
     }
   }
@@ -49,9 +40,8 @@ footer {
   }
 
   @media (max-width: 750px) {
-    nav {
+    footer {
       flex-direction: column;
-
       gap: 10px;
 
       a {

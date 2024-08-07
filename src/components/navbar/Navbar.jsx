@@ -15,12 +15,17 @@ const Navbar = () => {
       aria-label="Ninth navbar example"
     >
       <div className="container-xl">
-        <img
-          src={DogShield}
-          alt="Logo"
-          style={{ width: "40px", height: "40px", marginRight: "10px" }}
-        />
-        <a className="navbar-brand" href="#">
+        <a
+          href="/home"
+          className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
+        >
+          <img
+            src={DogShield}
+            alt="Logo"
+            style={{ width: "40px", height: "40px", marginRight: "10px" }}
+          />
+        </a>
+        <a className="navbar-brand" href="/home">
           Amigo Peludo
         </a>
         <button
@@ -37,23 +42,18 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarsExample07XL">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/loja">
                 Loja
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/faq">
                 Faq
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Agendamento
+              <a className="nav-link" href="/contato">
+                Contato
               </a>
             </li>
             <li className="nav-item dropdown">

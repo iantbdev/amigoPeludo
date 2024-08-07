@@ -11,9 +11,9 @@ import "./footer.scss";
 const Footer = () => {
   return (
     <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <div className="col-md-4 d-flex align-items-center">
+      <div className="col-md-4 d-flex align-items-center container">
         <a
-          href="/"
+          href="/home"
           className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
         >
           <img
@@ -26,17 +26,17 @@ const Footer = () => {
 
         <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
           <li className="ms-3">
-            <a className="social-icon twitter" href="#">
+            <a className="twitter" href="#">
               <FontAwesomeIcon icon={faTwitter} size="2x" />
             </a>
           </li>
           <li className="ms-3">
-            <a className="social-icon instagram" href="#">
+            <a className="instagram" href="#">
               <FontAwesomeIcon icon={faInstagram} size="2x" />
             </a>
           </li>
           <li className="ms-3">
-            <a className="social-icon facebook" href="#">
+            <a className="facebook" href="#">
               <FontAwesomeIcon icon={faFacebook} size="2x" />
             </a>
           </li>
