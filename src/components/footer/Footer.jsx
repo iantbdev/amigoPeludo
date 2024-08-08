@@ -24,8 +24,8 @@ const Footer = () => {
         </a>
         <span className="mb-3 mb-md-0 text-muted">©2024, Amigo Peludo</span>
 
-        <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-          <li className="ms-3">
+        <ul className="nav col-md-3 justify-content-center list-unstyled d-flex">
+          <li className="ms-0">
             <a className="twitter" href="#">
               <FontAwesomeIcon icon={faTwitter} size="2x" />
             </a>
