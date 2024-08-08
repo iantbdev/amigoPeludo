@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Banner from "../../assets/banner.webp";
 import Banner2 from "../../assets/banner-2.webp";
 import Banner3 from "../../assets/banner3.webp";
+import BannerContact from "../../assets/BannerContact.png";
 import ComidaGato from "../../assets/img/comida_gato.svg";
 import BrinquedoCao from "../../assets/img/GoodDogBone__71419 1.svg";
 import BrinquedoGato from "../../assets/img/gato_brinquedo.svg";
@@ -67,9 +68,13 @@ const Home = () => {
           </div>
         </section>
 
+        <div className="whastsapp">
+          <img src={BannerContact} alt="" />
+        </div>
+
         <Servicos />
+        <Marcas />
       </main>
-      <Marcas />
     </div>
   );
 };
