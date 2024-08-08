@@ -7,6 +7,7 @@ import ComidaGato from "../../assets/img/comida_gato.svg";
 import BrinquedoCao from "../../assets/img/GoodDogBone__71419 1.svg";
 import BrinquedoGato from "../../assets/img/gato_brinquedo.svg";
 import ComidaCao from "../../assets/img/smalldog-710065 1.svg";
+import Servicos from "../../components/servicos/servicos";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -60,6 +61,8 @@ const Home = () => {
             </div>
           </div>
         </section>
+
+        <Servicos />
       </main>
     </div>
   );
