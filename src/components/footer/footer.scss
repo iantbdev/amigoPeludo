@@ -1,18 +1,23 @@
 footer {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centraliza itens horizontalmente */
+  justify-content: center;
   flex-wrap: wrap;
   padding: 2% 5%;
   margin-top: 60px;
   background-color: whitesmoke;
-  text-align: center; /* Centraliza o texto dentro do footer */
+  text-align: center;
 
   .container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .text-muted {
@@ -45,16 +50,35 @@ footer {
   .nav {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centraliza ícones horizontalmente */
-    margin: 0; /* Remove margem extra */
-    padding: 0; /* Remove padding extra */
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 10px;
+    }
   }
 
-  .nav li {
-    margin-left: 10px; /* Espaçamento entre os ícones */
+  @media (max-width: 1200px) {
+    padding: 1.5% 4%;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 992px) {
+    padding: 1% 3%;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1% 2%;
+    .text-muted {
+      font-size: 0.8rem;
+    }
+
+    .nav li {
+      margin: 0 8px;
+    }
+  }
+
+  @media (max-width: 576px) {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -74,11 +98,11 @@ footer {
     .nav {
       flex-direction: row;
       align-items: center;
-    }
 
-    .nav li {
-      margin-left: 10px;
-      margin-bottom: 10px; /* Espaçamento entre ícones em telas menores */
+      li {
+        margin: 0 8px;
+        margin-bottom: 10px;
+      }
     }
   }
 }

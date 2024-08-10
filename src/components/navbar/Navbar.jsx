@@ -2,11 +2,7 @@ import React from "react";
 import "./navbar.scss";
 import DogShield from "../../../public/shield-dog-solid.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faFacebook,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   return (
@@ -85,9 +81,17 @@ const Navbar = () => {
               </ul>
             </li>
           </ul>
-          <form>
-            <button className="botao btn btn-outline-primary">Login</button>
-          </form>
+          <div className="login-icon-container">
+            <a
+              href="/login"
+              className="login-icon"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title="Login"
+            >
+              <FontAwesomeIcon icon={faSignInAlt} />
+            </a>
+          </div>
         </div>
       </div>
     </nav>

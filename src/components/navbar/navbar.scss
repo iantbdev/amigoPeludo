@@ -14,7 +14,7 @@
   .logo {
     display: flex;
     align-items: center;
-    margin-right: auto; /* Faz com que a logo se mova para a esquerda */
+    margin-right: auto;
     span {
       font-size: 18px;
       font-weight: bold;
@@ -42,6 +42,19 @@
       text-decoration: none;
       color: white;
       background-color: #f63d3d;
+    }
+  }
+  .login-icon-container {
+    .login-icon {
+      font-size: 1.5rem;
+      color: #f63d3d;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s;
+
+      &:hover {
+        color: #ff8787;
+      }
     }
   }
 }

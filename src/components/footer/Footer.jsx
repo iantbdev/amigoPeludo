@@ -10,7 +10,7 @@ import "./footer.scss";
 
 const Footer = () => {
   return (
-    <footer className="d-flex flex-wrap justify-content-center align-items-center py-3 my-0 border-top">
+    <footer className="d-flex flex-wrap justify-content-center align-items-center py-3 my-0">
       <div className="container">
         <a href="/home" className="text-muted text-decoration-none lh-1">
           <img

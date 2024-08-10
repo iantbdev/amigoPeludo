@@ -1,0 +1,36 @@
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #f63d3d;
+  z-index: 2;
+}
+
+.card-login {
+  min-height: 100vh;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  border-radius: 25px;
+  height: 45rem;
+
+  @media (max-width: 1000px) {
+    height: 52rem;
+  }
+
+  .card-body {
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  @media (max-width: 576px) {
+    height: auto;
+    margin: 10px;
+  }
+}
