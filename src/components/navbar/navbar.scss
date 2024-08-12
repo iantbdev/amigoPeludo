@@ -1,6 +1,9 @@
+// navbar.scss
+
+/* Navbar styles */
 .navbar {
   display: flex;
-  justify-content: center; /* Centraliza os itens na horizontal */
+  justify-content: center;
   padding: 20px 20px;
   background-color: #f5f5f5;
   gap: 10px;
@@ -44,6 +47,7 @@
       background-color: #f63d3d;
     }
   }
+
   .login-icon-container {
     .login-icon {
       font-size: 1.5rem;
@@ -54,6 +58,59 @@
 
       &:hover {
         color: #ff8787;
+      }
+    }
+  }
+}
+
+.categorias-container {
+  // background-color: #f75656;
+  border-top: 2px solid #f5f5f5;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  padding: 10px 0;
+
+  .container-xl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav {
+    display: flex;
+    width: 100%;
+
+    .nav-item {
+      position: relative;
+
+      .nav-link {
+        font-size: 1rem;
+        color: #1a1a1a;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #f75656;
+        }
+      }
+
+      .dropdown-menu {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateY(10px);
+
+        .dropdown-item {
+          padding: 10px 15px;
+          color: #333;
+          display: block;
+          transition: background-color 0.3s ease;
+        }
+      }
+
+      &:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   }

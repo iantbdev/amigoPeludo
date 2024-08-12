@@ -34,13 +34,13 @@ const Home = () => {
           // className="introducao"
         >
           <SwiperSlide>
+            <img src={Banner3} alt="Banner3" />
+          </SwiperSlide>
+          <SwiperSlide>
             <img src={Banner} alt="Banner" />
           </SwiperSlide>
           <SwiperSlide>
             <img src={Banner2} alt="Banner2" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={Banner3} alt="Banner3" />
           </SwiperSlide>
         </Swiper>
 
