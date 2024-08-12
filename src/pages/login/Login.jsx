@@ -1,8 +1,47 @@
+import React, { useState } from "react";
 import "./login.scss";
 
 const Login = () => {
+  // Definindo estados para email, senha e mensagens de erro
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   const handleBackButtonClick = () => {
     window.location.href = "/home";
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(
+        "https://petshop-bca2a-default-rtdb.firebaseio.com/users.json"
+      );
+      const data = await response.json();
+
+      if (!data) throw new Error("Nenhum usuário encontrado");
+
+      const userArray = Object.values(data);
+      const user = userArray.find(
+        (user) => user.email === email && user.password === password
+      );
+
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log("Usuário logado.");
+
+        setTimeout(() => {
+          window.location.href = "/home";
+        }, 1000);
+      } else {
+        setError("Email ou senha incorretos.");
+        console.log("ERROR");
+      }
+    } catch (error) {
+      console.error("Erro ao buscar o usuário:", error);
+      setError("Erro ao buscar o usuário.");
+    }
   };
 
   return (
@@ -24,7 +63,7 @@ const Login = () => {
                       Log-in
                     </p>
 
-                    <form className="mx-1 mx-md-4" id="loginUserForm">
+                    <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
@@ -34,6 +73,8 @@ const Login = () => {
                             id="email"
                             className="form-control"
                             placeholder="Seu Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                       </div>
@@ -47,9 +88,17 @@ const Login = () => {
                             id="password"
                             className="form-control"
                             placeholder="Senha"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
                       </div>
+
+                      {error && (
+                        <div className="alert alert-danger" role="alert">
+                          {error}
+                        </div>
+                      )}
 
                       <div className="form-check d-flex justify-content-center mb-3">
                         <a href="#!" style={{ color: "#f63d3d" }}>
@@ -73,7 +122,6 @@ const Login = () => {
                         <button
                           type="submit"
                           className="btn btn-primary btn-lg"
-                          id="login_button"
                           style={{ backgroundColor: "#f63d3d", border: "none" }}
                         >
                           Login

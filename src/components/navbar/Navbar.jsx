@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.scss";
 import DogShield from "../../../public/shield-dog-solid.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSignInAlt,
+  faSignOutAlt,
+  faCircleUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { NavLink, Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setLoggedInUser(user);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setLoggedInUser(null);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
+
   return (
     <>
       <nav
@@ -53,41 +74,66 @@ const Navbar = () => {
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
-                  id="dropdown07XL"
+                  id="navbarDropdownConta"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Conta
+                  {loggedInUser ? loggedInUser.name : "Conta"}
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="dropdown07XL">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdownConta"
+                >
+                  {loggedInUser ? (
+                    <>
+                      <li>
+                        <a
+                          className="dropdown-item"
+                          href="#"
+                          onClick={handleLogout}
+                        >
+                          <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+                        </a>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <Link className="dropdown-item" to="/login">
+                          <FontAwesomeIcon icon={faSignInAlt} /> Login
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/registro">
+                          Inscreva-se
+                        </Link>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </li>
             </ul>
             <div className="login-icon-container">
-              <a
-                href="/login"
-                className="login-icon"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                title="Login"
-              >
-                <FontAwesomeIcon icon={faSignInAlt} />
-              </a>
+              {loggedInUser ? (
+                <a
+                  href="/"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title="Sua Conta"
+                >
+                  <FontAwesomeIcon className="login-icon" icon={faCircleUser} />
+                </a>
+              ) : (
+                <a
+                  href="/login"
+                  className="login-icon"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title="Login | Cadastro"
+                >
+                  <FontAwesomeIcon icon={faSignInAlt} />
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -103,19 +149,19 @@ const Navbar = () => {
               </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <a className="dropdown-item" to="/home">
+                  <Link className="dropdown-item" to="/home">
                     Ração
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" to="/home">
+                  <Link className="dropdown-item" to="/home">
                     Medicamentos
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" to="/home">
+                  <Link className="dropdown-item" to="/home">
                     Roupas
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -125,75 +171,75 @@ const Navbar = () => {
               </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <a className="dropdown-item" href="/cachorros">
+                  <Link className="dropdown-item" to="/cachorros">
                     Cachorros
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/gatos">
+                  <Link className="dropdown-item" to="/gatos">
                     Gatos
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/roedores">
+                  <Link className="dropdown-item" to="/roedores">
                     Roedores
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link"
-                href="#"
+                to="#"
                 id="dropdownPets"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Roedores
-              </a>
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <a className="dropdown-item" href="/cachorros">
+                  <Link className="dropdown-item" to="/cachorros">
                     Ração
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/gatos">
+                  <Link className="dropdown-item" to="/gatos">
                     Medicamentos
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/roedores">
+                  <Link className="dropdown-item" to="/roedores">
                     Brinquedos
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link"
-                href="#"
+                to="#"
                 id="dropdownPets"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Peixes
-              </a>
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <a className="dropdown-item" href="/cachorros">
+                  <Link className="dropdown-item" to="/cachorros">
                     Ração e Vitaminas
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/gatos">
+                  <Link className="dropdown-item" to="/gatos">
                     Manutenção e Limpeza
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/roedores">
+                  <Link className="dropdown-item" to="/roedores">
                     Plantas e Enfeites
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
