@@ -9,19 +9,25 @@ import Registro from "./pages/registro/Registro";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import GatoList from "./pages/loja/animais/GatoList";
+import CachorroList from "./pages/loja/animais/CachorroList";
+import RoedoresList from "./pages/loja/animais/RoedoresList";
+import PeixesList from "./pages/loja/animais/PeixesList";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div>
-        <Navbar />
         <BrowserRouter>
+          <Navbar />
           <Routes>
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/loja" element={<Loja />} />
+            {/* <Route path="/loja" element={<Loja />} /> */}
+            <Route path="/gatos" element={<GatoList />} />
+            <Route path="/cachorros" element={<CachorroList />} />
+            <Route path="/roedores" element={<RoedoresList />} />
+            <Route path="/peixes" element={<PeixesList />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/login" element={<Login />} />

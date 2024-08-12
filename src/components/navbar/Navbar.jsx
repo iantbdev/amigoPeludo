@@ -3,6 +3,7 @@ import "./navbar.scss";
 import DogShield from "../../../public/shield-dog-solid.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { NavLink, Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -38,11 +39,6 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarsExample07XL">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link" href="/loja">
-                  Loja
-                </a>
-              </li>
               <li className="nav-item">
                 <a className="nav-link" href="/faq">
                   Faq
@@ -101,44 +97,32 @@ const Navbar = () => {
       <div className="categorias-container py-2">
         <div className="container-xl">
           <ul className="nav">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link"
-                href="#"
-                id="dropdownPets"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+            <li className="nav-item">
+              <Link className="nav-link" to="/gatos">
                 Gatos
-              </a>
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <a className="dropdown-item" href="/cachorros">
+                  <a className="dropdown-item" to="/home">
                     Ração
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/gatos">
+                  <a className="dropdown-item" to="/home">
                     Medicamentos
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/roedores">
+                  <a className="dropdown-item" to="/home">
                     Roupas
                   </a>
                 </li>
               </ul>
             </li>
             <li className="nav-item dropdown">
-              <a
-                className="nav-link"
-                href="#"
-                id="dropdownPets"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <Link className="nav-link" to="/cachorros">
                 Cachorros
-              </a>
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
                   <a className="dropdown-item" href="/cachorros">
