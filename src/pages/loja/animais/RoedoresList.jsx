@@ -4,7 +4,7 @@ import Loja from "./../Loja";
 const RoedoresList = () => {
   return (
     <>
-      <Loja category="roedores" />
+      <Loja category="roedor" />
     </>
   );
 };

@@ -188,13 +188,7 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="nav-item dropdown">
-              <Link
-                className="nav-link"
-                to="#"
-                id="dropdownPets"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <Link className="nav-link" to="/roedores">
                 Roedores
               </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
@@ -216,13 +210,7 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="nav-item dropdown">
-              <Link
-                className="nav-link"
-                to="#"
-                id="dropdownPets"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <Link className="nav-link" to="/peixes">
                 Peixes
               </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
