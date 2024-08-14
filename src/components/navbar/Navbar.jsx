@@ -6,11 +6,15 @@ import {
   faSignInAlt,
   faSignOutAlt,
   faCircleUser,
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
+
+  const cartItems = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -34,8 +38,8 @@ const Navbar = () => {
         aria-label="Ninth navbar example"
       >
         <div className="container-xl">
-          <a
-            href="/home"
+          <Link
+            to="/home"
             className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
           >
             <img
@@ -43,10 +47,10 @@ const Navbar = () => {
               alt="Logo"
               style={{ width: "40px", height: "40px", marginRight: "10px" }}
             />
-          </a>
-          <a className="navbar-brand" href="/home">
+          </Link>
+          <Link className="navbar-brand" to="/home">
             Amigo Peludo
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -61,14 +65,14 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarsExample07XL">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" href="/faq">
+                <Link className="nav-link" to="/faq">
                   Faq
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/contato">
+                <Link className="nav-link" to="/contato">
                   Contato
-                </a>
+                </Link>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -113,27 +117,51 @@ const Navbar = () => {
                 </ul>
               </li>
             </ul>
-            <div className="login-icon-container">
-              {loggedInUser ? (
-                <a
-                  href="/"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="bottom"
-                  title="Sua Conta"
-                >
-                  <FontAwesomeIcon className="login-icon" icon={faCircleUser} />
-                </a>
-              ) : (
-                <a
-                  href="/login"
-                  className="login-icon"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="bottom"
-                  title="Login | Cadastro"
-                >
-                  <FontAwesomeIcon icon={faSignInAlt} />
-                </a>
-              )}
+            <div className="d-flex align-items-center">
+              <Link
+                to="/carrinho"
+                className="d-flex align-items-center text-decoration-none"
+              >
+                <FontAwesomeIcon
+                  className="me-2"
+                  style={{ color: "#f75656" }}
+                  icon={faShoppingCart}
+                  size="lg"
+                />
+                {cartItems.length > 0 && (
+                  <span
+                    className="badge rounded-pill"
+                    style={{ backgroundColor: "#5656F7", transition: "0.3s" }}
+                  >
+                    {cartItems.length}
+                  </span>
+                )}
+              </Link>
+              <div className="login-icon-container ms-3">
+                {loggedInUser ? (
+                  <a
+                    href="/"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="Sua Conta"
+                  >
+                    <FontAwesomeIcon
+                      className="login-icon"
+                      icon={faCircleUser}
+                    />
+                  </a>
+                ) : (
+                  <a
+                    href="/login"
+                    className="login-icon"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="Login | Cadastro"
+                  >
+                    <FontAwesomeIcon icon={faSignInAlt} />
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>

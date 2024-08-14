@@ -3,12 +3,16 @@ import Button from "react-bootstrap/Button";
 import ModalProduto from "../../components/AdminAcoes/ModalAddProduto";
 import Form from "react-bootstrap/Form";
 import ProductActions from "../../components/AdminAcoes/ProdutoAcoes";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/reducers/cartSlice";
 import "./loja.scss";
 
 const Loja = ({ category }) => {
   const [products, setProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("titulo");
+
+  const dispatch = useDispatch();
 
   const getCurrentUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -98,6 +102,10 @@ const Loja = ({ category }) => {
     }
   };
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <div>
       <div className="container">
@@ -135,7 +143,10 @@ const Loja = ({ category }) => {
                     onDelete={handleDelete}
                   />
                 ) : (
-                  <Button className="btn btn-success" href="/pagamento">
+                  <Button
+                    className="btn btn-success"
+                    onClick={() => handleAddToCart(product)}
+                  >
                     Comprar
                   </Button>
                 )}

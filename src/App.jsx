@@ -13,6 +13,8 @@ import GatoList from "./pages/loja/animais/GatoList";
 import CachorroList from "./pages/loja/animais/CachorroList";
 import RoedoresList from "./pages/loja/animais/RoedoresList";
 import PeixesList from "./pages/loja/animais/PeixesList";
+import Carrinho from "./pages/carrinho/Carrinho";
+import { Pagamento } from "./pages/pagamento/Pagamento";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
             <Route path="/roedores" element={<RoedoresList />} />
             <Route path="/peixes" element={<PeixesList />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/carrinho" element={<Carrinho />} />
+            <Route path="/pagamento" element={<Pagamento />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
