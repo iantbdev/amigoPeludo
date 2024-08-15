@@ -14,7 +14,7 @@ import CachorroList from "./pages/loja/animais/CachorroList";
 import RoedoresList from "./pages/loja/animais/RoedoresList";
 import PeixesList from "./pages/loja/animais/PeixesList";
 import Carrinho from "./pages/carrinho/Carrinho";
-import { Pagamento } from "./pages/pagamento/Pagamento";
+import Pagamento from "./pages/pagamento/Pagamento";
 
 function App() {
   return (
