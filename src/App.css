@@ -4,3 +4,8 @@ body {
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}

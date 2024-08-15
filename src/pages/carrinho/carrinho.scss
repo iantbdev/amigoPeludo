@@ -1,0 +1,46 @@
+.carrinho {
+  color: #757575;
+
+  icon {
+    cursor: pointer;
+  }
+
+  h2 {
+    color: #5f5f5f;
+  }
+  .container-vazio {
+    display: flex;
+    flex-direction: column;
+
+    h3,
+    h5 {
+      text-align: center;
+    }
+    h3 {
+      margin: 20px 0px 10px 0px;
+    }
+    h5 {
+      margin-bottom: 25px;
+    }
+    img {
+      width: 50%;
+      margin: 0 auto;
+    }
+    .carrinho-buttonHome {
+      margin: 0 auto;
+
+      .carrinho-button {
+        width: fit-content;
+
+        background-color: #ffe4e4;
+        color: #e03636;
+        border: 1px solid #f75656;
+
+        &:hover {
+          background-color: transparent;
+          color: #f75656;
+        }
+      }
+    }
+  }
+}

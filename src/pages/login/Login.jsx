@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
 
 const Login = () => {
@@ -6,9 +7,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleBackButtonClick = () => {
-    window.location.href = "/home";
+    navigate("/home");
   };
 
   const handleSubmit = async (event) => {
@@ -32,7 +34,7 @@ const Login = () => {
         console.log("Usuário logado.");
 
         setTimeout(() => {
-          window.location.href = "/home";
+          navigate("/home");
         }, 1000);
       } else {
         setError("Email ou senha incorretos.");
@@ -112,9 +114,9 @@ const Login = () => {
                           style={{ color: "#393f81" }}
                         >
                           Não tem uma conta?{" "}
-                          <a href="/registro" style={{ color: "#f63d3d" }}>
+                          <Link to="/registro" style={{ color: "#f63d3d" }}>
                             Inscreva-se aqui
-                          </a>
+                          </Link>
                         </p>
                       </div>
 

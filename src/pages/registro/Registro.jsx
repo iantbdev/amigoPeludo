@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./registro.scss";
 
 const Registro = () => {
@@ -111,9 +112,9 @@ const Registro = () => {
                           style={{ color: "#393f81" }}
                         >
                           Já tem uma conta?{" "}
-                          <a style={{ color: "#f63d3d" }} href="/login">
+                          <Link style={{ color: "#f63d3d" }} to="/login">
                             Logue aqui
-                          </a>
+                          </Link>
                         </p>
                       </div>
 
