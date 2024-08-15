@@ -15,6 +15,7 @@ import RoedoresList from "./pages/loja/animais/RoedoresList";
 import PeixesList from "./pages/loja/animais/PeixesList";
 import Carrinho from "./pages/carrinho/Carrinho";
 import Pagamento from "./pages/pagamento/Pagamento";
+import Conta from "./pages/conta/Conta";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/faq" element={<Faq />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
+            <Route path="/conta" element={<Conta />} />
           </Routes>
         </BrowserRouter>
         <Footer />

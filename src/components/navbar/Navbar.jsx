@@ -139,8 +139,8 @@ const Navbar = () => {
               </Link>
               <div className="login-icon-container ms-3">
                 {loggedInUser ? (
-                  <a
-                    href="/"
+                  <Link
+                    to="/conta"
                     data-bs-toggle="tooltip"
                     data-bs-placement="bottom"
                     title="Sua Conta"
@@ -149,17 +149,17 @@ const Navbar = () => {
                       className="login-icon"
                       icon={faCircleUser}
                     />
-                  </a>
+                  </Link>
                 ) : (
-                  <a
-                    href="/login"
+                  <Link
+                    to="/login"
                     className="login-icon"
                     data-bs-toggle="tooltip"
                     data-bs-placement="bottom"
                     title="Login | Cadastro"
                   >
                     <FontAwesomeIcon icon={faSignInAlt} />
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>
