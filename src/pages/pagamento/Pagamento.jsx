@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import EditOrderModal from "../../components/EditOrderAddress/EditOrderModal";
 import "./pagamento.scss";
+import { useNavigate } from "react-router-dom";
 
 const Pagamento = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -16,7 +17,6 @@ const Pagamento = () => {
     cep: "",
     saveAddress: false,
   });
-
   const [showEditModal, setShowEditModal] = useState(false);
   const [currentAddress, setCurrentAddress] = useState(null);
 
@@ -87,6 +87,7 @@ const Pagamento = () => {
     } catch (error) {
       console.error("Houve um erro", error);
     }
+    // window.location.href = "/home";
   };
 
   const updateOrder = async (orderId, updatedOrder) => {
@@ -356,30 +357,32 @@ const Pagamento = () => {
                 <h6 className="text-uppercase">Endereços salvos</h6>
                 {userOrders.length > 0 ? (
                   <ul className="list-group">
-                    {userOrders.map((order) => (
-                      <li
-                        className="list-group-item order-item"
-                        onClick={() => selectAddress(order)}
-                        key={order.id}
-                      >
-                        <p>
-                          {order.rua}, {order.cidade} - {order.estado} -{" "}
-                          {order.cep}
-                        </p>
-                        <Button
-                          className="btn btn-success"
-                          onClick={() => handleEditOrder(order)}
+                    {userOrders
+                      .filter((order) => order.saveAddress)
+                      .map((order) => (
+                        <li
+                          className="list-group-item order-item"
+                          onClick={() => selectAddress(order)}
+                          key={order.id}
                         >
-                          <i className="fa fa-edit" aria-hidden="true"></i>
-                        </Button>
-                        <Button
-                          className="btn btn-success"
-                          onClick={() => handleDeleteOrder(order.id)}
-                        >
-                          <i className="fa fa-trash" aria-hidden="true"></i>
-                        </Button>
-                      </li>
-                    ))}
+                          <p>
+                            {order.rua}, {order.cidade} - {order.estado} -{" "}
+                            {order.cep}
+                          </p>
+                          <Button
+                            className="btn btn-success"
+                            onClick={() => handleEditOrder(order)}
+                          >
+                            <i className="fa fa-edit" aria-hidden="true"></i>
+                          </Button>
+                          <Button
+                            className="btn btn-success"
+                            onClick={() => handleDeleteOrder(order.id)}
+                          >
+                            <i className="fa fa-trash" aria-hidden="true"></i>
+                          </Button>
+                        </li>
+                      ))}
                   </ul>
                 ) : (
                   <p>Você não tem endereços salvos.</p>
