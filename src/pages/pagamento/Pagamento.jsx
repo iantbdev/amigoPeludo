@@ -89,7 +89,7 @@ const Pagamento = () => {
     } catch (error) {
       console.error("Houve um erro", error);
     }
-    // window.location.href = "/home";
+    window.location.href = "/home";
   };
 
   const updateOrder = async (orderId, updatedOrder) => {

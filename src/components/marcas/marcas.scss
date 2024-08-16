@@ -1,25 +1,32 @@
 .marcas {
-  background-color: #ed5c01;
-  height: 150px;
+  // background-color: #ed5c01;
+  height: 200px;
   text-align: center;
-  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border: 1px solid #ed5c01;
 
   h2 {
-    padding-top: 10px;
+    background-color: #ed5c01;
+    border-top-left-radius: 20px;
+    padding: 10px;
     font-size: 1.9rem;
     color: #f5f5f5;
+    margin-bottom: 30px;
   }
 
   .image-wrapper {
-    max-width: 400px;
+    width: 100%;
     margin: 0 auto;
-
-    display: flex;
 
     img {
       width: 100px;
       padding: 0 5px;
       margin: 0 5px;
     }
+  }
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
