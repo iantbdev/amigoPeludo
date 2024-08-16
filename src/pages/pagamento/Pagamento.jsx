@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import EditOrderModal from "../../components/EditOrderAddress/EditOrderModal";
 import "./pagamento.scss";
-import { useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const Pagamento = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -19,6 +18,8 @@ const Pagamento = () => {
   });
   const [showEditModal, setShowEditModal] = useState(false);
   const [currentAddress, setCurrentAddress] = useState(null);
+
+  const cartItems = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -73,6 +74,7 @@ const Pagamento = () => {
           body: JSON.stringify({
             ...formData,
             userEmail: currentUser.email,
+            items: cartItems,
           }),
         }
       );
