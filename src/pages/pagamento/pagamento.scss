@@ -60,7 +60,7 @@
 
   .decoration {
     text-decoration: none;
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   .btn-success {
@@ -80,33 +80,26 @@
     color: #fdcc49;
   }
 
-  .container-orders {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 auto;
-    gap: 1rem; // Adiciona espaço entre os itens da grade
-  }
-
   button {
-    background-color: #f63d3d;
-    color: #fff;
+    font-weight: 500;
+    background-color: #0bc543;
+    color: #f5f5f5;
     width: fit-content;
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
-    cursor: pointer;
     font-size: 1rem;
   }
 
   button:hover {
-    background-color: #e95950;
+    background-color: #22b14c;
   }
 
   .order-item {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 1rem;
-    margin: 1rem;
+    margin: 1rem 0px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;

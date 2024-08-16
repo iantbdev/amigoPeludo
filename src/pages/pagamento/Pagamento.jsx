@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
+import EditOrderModal from "../../components/EditOrderAddress/EditOrderModal";
 import "./pagamento.scss";
 
 const Pagamento = () => {
@@ -8,6 +9,16 @@ const Pagamento = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [cardDetailsVisible, setCardDetailsVisible] = useState(true);
   const [userOrders, setUserOrders] = useState([]);
+  const [formData, setFormData] = useState({
+    cidade: "",
+    estado: "",
+    rua: "",
+    cep: "",
+    saveAddress: false,
+  });
+
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [currentAddress, setCurrentAddress] = useState(null);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -53,26 +64,26 @@ const Pagamento = () => {
 
   const createOrder = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const orderData = {
-      userEmail: currentUser.email,
-      cidade: formData.get("cidade"),
-      estado: formData.get("estado"),
-      rua: formData.get("rua"),
-      cep: formData.get("cep"),
-      saveAddress: formData.get("saveAddress") ? true : false,
-    };
     try {
       await fetch(
         "https://petshop-bca2a-default-rtdb.firebaseio.com/pedidos.json",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(orderData),
+          body: JSON.stringify({
+            ...formData,
+            userEmail: currentUser.email,
+          }),
         }
       );
       alert("Compra realizada!");
-      event.target.reset();
+      setFormData({
+        cidade: "",
+        estado: "",
+        rua: "",
+        cep: "",
+        saveAddress: false,
+      });
     } catch (error) {
       console.error("Houve um erro", error);
     }
@@ -108,8 +119,24 @@ const Pagamento = () => {
     }
   };
 
+  const selectAddress = (order) => {
+    setFormData({
+      cidade: order.cidade,
+      estado: order.estado,
+      rua: order.rua,
+      cep: order.cep,
+      saveAddress: false,
+    });
+  };
+
   const handleEditOrder = (order) => {
-    // Implementa a lógica para exibir e editar o modal
+    setCurrentAddress(order);
+    setShowEditModal(true);
+  };
+
+  const handleSave = (updatedOrder) => {
+    updateOrder(updatedOrder.orderId, updatedOrder);
+    setShowEditModal(false);
   };
 
   const handleDeleteOrder = (orderId) => {
@@ -142,7 +169,8 @@ const Pagamento = () => {
                       name="paymentMethod"
                       id="paymentCard"
                       value="card"
-                      defaultChecked
+                      checked={paymentMethod === "card"}
+                      onChange={() => setPaymentMethod("card")}
                     />
                     <label className="form-check-label" htmlFor="paymentCard">
                       Cartão de Crédito/Débito
@@ -155,6 +183,8 @@ const Pagamento = () => {
                       name="paymentMethod"
                       id="paymentPix"
                       value="pix"
+                      checked={paymentMethod === "pix"}
+                      onChange={() => setPaymentMethod("pix")}
                     />
                     <label className="form-check-label" htmlFor="paymentPix">
                       PIX
@@ -167,6 +197,8 @@ const Pagamento = () => {
                       name="paymentMethod"
                       id="paymentBoleto"
                       value="boleto"
+                      checked={paymentMethod === "boleto"}
+                      onChange={() => setPaymentMethod("boleto")}
                     />
                     <label className="form-check-label" htmlFor="paymentBoleto">
                       Boleto
@@ -231,6 +263,13 @@ const Pagamento = () => {
                             type="text"
                             name="cidade"
                             className="form-control"
+                            value={formData.cidade}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                cidade: e.target.value,
+                              })
+                            }
                             required
                           />
                           <span>Cidade</span>
@@ -242,6 +281,13 @@ const Pagamento = () => {
                             type="text"
                             name="estado"
                             className="form-control"
+                            value={formData.estado}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                estado: e.target.value,
+                              })
+                            }
                             required
                           />
                           <span>Estado</span>
@@ -253,6 +299,13 @@ const Pagamento = () => {
                         type="text"
                         name="rua"
                         className="form-control"
+                        value={formData.rua}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            rua: e.target.value,
+                          })
+                        }
                         required
                       />
                       <span>Rua</span>
@@ -262,6 +315,13 @@ const Pagamento = () => {
                         type="text"
                         name="cep"
                         className="form-control"
+                        value={formData.cep}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            cep: e.target.value,
+                          })
+                        }
                         required
                       />
                       <span>CEP</span>
@@ -271,6 +331,13 @@ const Pagamento = () => {
                         className="form-check-input"
                         type="checkbox"
                         name="saveAddress"
+                        checked={formData.saveAddress}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            saveAddress: e.target.checked,
+                          })
+                        }
                       />
                       <label className="form-check-label">
                         Salvar endereço
@@ -278,7 +345,7 @@ const Pagamento = () => {
                     </div>
                   </div>
                   <button type="submit" className="btn btn-primary mt-4">
-                    Confirmar e pagar
+                    Realizar Pagamento
                   </button>
                 </div>
               </form>
@@ -290,20 +357,26 @@ const Pagamento = () => {
                 {userOrders.length > 0 ? (
                   <ul className="list-group">
                     {userOrders.map((order) => (
-                      <li className="list-group-item" key={order.id}>
-                        {order.rua}, {order.cidade} - {order.estado} -{" "}
-                        {order.cep}
+                      <li
+                        className="list-group-item order-item"
+                        onClick={() => selectAddress(order)}
+                        key={order.id}
+                      >
+                        <p>
+                          {order.rua}, {order.cidade} - {order.estado} -{" "}
+                          {order.cep}
+                        </p>
                         <Button
-                          className="btn btn-link"
+                          className="btn btn-success"
                           onClick={() => handleEditOrder(order)}
                         >
-                          Editar
+                          <i className="fa fa-edit" aria-hidden="true"></i>
                         </Button>
                         <Button
-                          className="btn btn-link "
+                          className="btn btn-success"
                           onClick={() => handleDeleteOrder(order.id)}
                         >
-                          Excluir
+                          <i className="fa fa-trash" aria-hidden="true"></i>
                         </Button>
                       </li>
                     ))}
@@ -316,6 +389,12 @@ const Pagamento = () => {
           </div>
         </div>
       </main>
+      <EditOrderModal
+        show={showEditModal}
+        handleClose={() => setShowEditModal(false)}
+        handleSave={handleSave}
+        addressData={currentAddress}
+      />
     </div>
   );
 };

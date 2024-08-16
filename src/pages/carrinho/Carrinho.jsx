@@ -1,7 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
-import { removeFromCart } from "../../store/reducers/cartSlice";
+import {
+  removeFromCart,
+  incrementProduct,
+  decrementProduct,
+} from "../../store/reducers/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
 import "./carrinho.scss";
 
@@ -28,9 +32,16 @@ const Carrinho = () => {
     }
   };
 
+  const handleDecrement = (produto) => {
+    dispatch(decrementProduct({ id: produto.id }));
+  };
+  const handleIncrement = (produto) => {
+    dispatch(incrementProduct({ id: produto.id }));
+  };
+
   const totalItems = cartItems.length;
   const totalPrice = cartItems.reduce(
-    (total, item) => total + item.preco * (item.quantidade || 1),
+    (total, item) => total + item.preco * item.quantidade,
     0
   );
   const shippingCost = 20.0;
@@ -87,15 +98,14 @@ const Carrinho = () => {
                               <h6 className="mb-0">{produto.titulo}</h6>
                             </div>
                             <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
-                              <Button
+                              <button
                                 className="btn btn-link px-2"
                                 onClick={() => {
-                                  // função a ser criada
-                                  //
+                                  handleDecrement(produto);
                                 }}
                               >
                                 <i className="fas fa-minus"></i>
-                              </Button>
+                              </button>
 
                               <input
                                 min="0"
@@ -105,15 +115,14 @@ const Carrinho = () => {
                                 className="form-control form-control-sm"
                               />
 
-                              <Button
+                              <button
                                 className="btn btn-link px-2"
                                 onClick={() => {
-                                  // funçao a ser criada
-                                  //
+                                  handleIncrement(produto);
                                 }}
                               >
                                 <i className="fas fa-plus"></i>
-                              </Button>
+                              </button>
                             </div>
                             <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                               <h6 className="mb-0">R$ {produto.preco}</h6>
