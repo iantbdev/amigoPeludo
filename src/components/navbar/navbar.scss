@@ -24,6 +24,10 @@
     }
   }
 
+  li {
+    text-decoration: none;
+  }
+
   .nav-link {
     color: black;
     font-weight: 500;
@@ -60,6 +64,21 @@
         color: #ff8787;
       }
     }
+    .login-icon {
+      font-size: 1.5rem;
+      color: #f63d3d;
+      transition: 0.3s;
+
+      &:hover {
+        color: #ff8787;
+      }
+    }
+
+    .user-name {
+      font-size: 1rem;
+      color: #333;
+      margin: 0px 4px;
+    }
   }
 }
 
@@ -85,13 +104,15 @@
       position: relative;
 
       .nav-link {
-        font-size: 1rem;
-        color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        color: black;
         font-weight: 500;
-        transition: color 0.3s ease;
+        text-decoration: none;
 
         &:hover {
-          color: #f75656;
+          color: #f63d3d;
+          transition: 0.2s;
         }
       }
 

@@ -66,55 +66,13 @@ const Navbar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link" to="/faq">
-                  Faq
+                  FAQ
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/contato">
                   Contato
                 </Link>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdownConta"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {loggedInUser ? loggedInUser.name : "Conta"}
-                </a>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownConta"
-                >
-                  {loggedInUser ? (
-                    <>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          href="#"
-                          onClick={handleLogout}
-                        >
-                          <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-                        </a>
-                      </li>
-                    </>
-                  ) : (
-                    <>
-                      <li>
-                        <Link className="dropdown-item" to="/login">
-                          <FontAwesomeIcon icon={faSignInAlt} /> Login
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/registro">
-                          Inscreva-se
-                        </Link>
-                      </li>
-                    </>
-                  )}
-                </ul>
               </li>
             </ul>
             <div className="d-flex align-items-center">
@@ -139,17 +97,43 @@ const Navbar = () => {
               </Link>
               <div className="login-icon-container ms-3">
                 {loggedInUser ? (
-                  <Link
-                    to="/conta"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="bottom"
-                    title="Sua Conta"
-                  >
-                    <FontAwesomeIcon
-                      className="login-icon"
-                      icon={faCircleUser}
-                    />
-                  </Link>
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      id="navbarDropdownConta"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <FontAwesomeIcon
+                        className="login-icon"
+                        icon={faCircleUser}
+                      />
+                      {loggedInUser && (
+                        <span className="user-name"> {loggedInUser.name}</span>
+                      )}
+                    </a>
+
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="navbarDropdownConta"
+                    >
+                      <li>
+                        <Link className="dropdown-item" to="/conta">
+                          Dados da Conta
+                        </Link>
+                      </li>
+                      <li>
+                        <a
+                          className="dropdown-item"
+                          href="#"
+                          onClick={handleLogout}
+                        >
+                          <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
                 ) : (
                   <Link
                     to="/login"

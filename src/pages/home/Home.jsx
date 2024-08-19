@@ -71,9 +71,9 @@ const Home = () => {
         <div className="whastsapp">
           <img src={BannerContact} alt="" />
         </div>
-
         <Servicos />
         <Marcas />
+        <div className="magicpattern"></div>
       </main>
     </div>
   );
