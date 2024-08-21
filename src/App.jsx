@@ -16,6 +16,9 @@ import PeixesList from "./pages/loja/animais/PeixesList";
 import Carrinho from "./pages/carrinho/Carrinho";
 import Pagamento from "./pages/pagamento/Pagamento";
 import Conta from "./pages/conta/Conta";
+import Pedidos from "./components/subrotasConta/PedidosConta";
+import Enderecos from "./components/subrotasConta/EnderecosConta";
+import DadosPessoais from "./components/subrotasConta/DadosPessoais";
 
 function App() {
   return (
@@ -124,7 +127,11 @@ function App() {
               <Conta />
             </Layout>
           }
-        />
+        >
+          <Route path="dados-pessoais" element={<DadosPessoais />} />
+          <Route path="enderecos" element={<Enderecos />} />
+          <Route path="pedidos" element={<Pedidos />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
