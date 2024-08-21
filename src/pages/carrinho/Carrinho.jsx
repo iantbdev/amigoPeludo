@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import {
@@ -13,6 +13,8 @@ const Carrinho = () => {
   const cartItems = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [shippingCost, setShippingCost] = useState(20.0); 
 
   const isAuthenticated = () => {
     const user = localStorage.getItem("user");
@@ -39,12 +41,15 @@ const Carrinho = () => {
     dispatch(incrementProduct({ id: produto.id }));
   };
 
+  const handleShippingChange = (e) => {
+    setShippingCost(parseFloat(e.target.value)); 
+  };
+
   const totalItems = cartItems.length;
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.preco * item.quantidade,
     0
   );
-  const shippingCost = 20.0;
   const grandTotal = totalPrice + shippingCost;
 
   return (
@@ -75,9 +80,7 @@ const Carrinho = () => {
                       <div className="p-5">
                         <div className="d-flex justify-content-between align-items-center mb-5">
                           <h2 className="fw-bold mb-0">Meu Carrinho</h2>
-                          <h6 className="mb-0 text-muted">
-                            {totalItems} itens
-                          </h6>
+                          <h6 className="mb-0 text-muted">{totalItems} itens</h6>
                         </div>
                         <hr className="my-4" />
 
@@ -152,9 +155,7 @@ const Carrinho = () => {
                     </div>
                     <div className="col-lg-4 bg-body-tertiary">
                       <div className="p-5">
-                        <h3 className="fw-bold mb-5 mt-2 pt-1">
-                          Resumo do Pedido
-                        </h3>
+                        <h3 className="fw-bold mb-5 mt-2 pt-1">Resumo do Pedido</h3>
                         <hr className="my-4" />
 
                         <div className="d-flex justify-content-between mb-4">
@@ -165,13 +166,13 @@ const Carrinho = () => {
                         <h5 className="mb-3">Entrega</h5>
 
                         <div className="mb-4 pb-2">
-                          <select className="form-select">
-                            <option value="20">
-                              Entrega Padrão - R$ 20.00
-                            </option>
-                            <option value="800">
-                              Entrega Expressa - R$ 800.00
-                            </option>
+                          <select
+                            className="form-select"
+                            value={shippingCost}
+                            onChange={handleShippingChange}
+                          >
+                            <option value="20">Entrega Padrão - R$ 20.00</option>
+                            <option value="80">Entrega Expressa - R$ 80.00</option>
                             <option value="0">Receber na Loja - Grátis</option>
                           </select>
                         </div>
