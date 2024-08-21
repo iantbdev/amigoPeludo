@@ -23,8 +23,15 @@ const Conta = () => {
           <h2>Conta</h2>
           <div className="section">
             <h3>Dados Pessoais</h3>
-            <p>Email: {userData.email}</p>
-            <p>Nome: {userData.nome}</p>
+            <p>
+              {" "}
+              <strong>Nome:</strong> {userData.nome}
+            </p>
+            <p>
+              {" "}
+              <strong>Email: </strong>
+              {userData.email}
+            </p>
           </div>
           <div className="section">
             <h3>Endereços</h3>

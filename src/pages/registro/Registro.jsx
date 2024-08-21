@@ -1,15 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./registro.scss";
 
 const Registro = () => {
-  const handleBackButtonClick = () => {
-    window.location.href = "/home";
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("As senhas não são iguais");
+      return;
+    }
+
+    try {
+      await newUser(formData);
+      localStorage.setItem("user", JSON.stringify(formData));
+      setError("");
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+      setTimeout(() => {
+        navigate("/home");
+      }, 1000);
+    } catch (error) {
+      console.error("Houve um erro:", error);
+      setError("Ocorreu um erro ao registrar o usuário");
+    }
+  };
+
+  const newUser = async (userData) => {
+    const response = await fetch(
+      "https://petshop-bca2a-default-rtdb.firebaseio.com/users.json",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Resposta de rede não foi ok");
+    }
   };
 
   return (
     <section className="card-register" style={{ backgroundColor: "#eee" }}>
-      
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
@@ -24,7 +80,7 @@ const Registro = () => {
                       Registre-se
                     </p>
 
-                    <form className="mx-1 mx-md-4" id="createUserForm">
+                    <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
@@ -34,6 +90,8 @@ const Registro = () => {
                             id="name"
                             className="form-control"
                             placeholder="Seu Nome"
+                            value={formData.name}
+                            onChange={handleInputChange}
                             required
                           />
                         </div>
@@ -48,6 +106,8 @@ const Registro = () => {
                             id="email"
                             className="form-control"
                             placeholder="Seu Email"
+                            value={formData.email}
+                            onChange={handleInputChange}
                             required
                           />
                         </div>
@@ -62,7 +122,9 @@ const Registro = () => {
                             id="password"
                             className="form-control"
                             placeholder="Senha"
-                            minLength={5}
+                            minLength={3}
+                            value={formData.password}
+                            onChange={handleInputChange}
                             required
                           />
                         </div>
@@ -73,13 +135,18 @@ const Registro = () => {
                         <div className="form-outline flex-fill mb-0">
                           <input
                             type="password"
+                            name="confirmPassword"
                             id="confirmPassword"
                             className="form-control"
                             placeholder="Repita sua senha"
+                            value={formData.confirmPassword}
+                            onChange={handleInputChange}
                             required
                           />
                         </div>
                       </div>
+
+                      {error && <p className="text-danger">{error}</p>}
 
                       <div className="form-check d-flex justify-content-center mb-0">
                         <input
@@ -121,7 +188,6 @@ const Registro = () => {
                           type="submit"
                           className="btn btn-primary btn-lg"
                           style={{ backgroundColor: "#f63d3d", border: "none" }}
-                          id="submit_button"
                         >
                           Registrar-se
                         </button>
