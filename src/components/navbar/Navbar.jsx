@@ -165,7 +165,7 @@ const Navbar = () => {
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
                   <Link className="dropdown-item" to="/gatos/racoes">
-                    Ração
+                    Rações e Petiscos
                   </Link>
                 </li>
                 <li>
@@ -187,7 +187,7 @@ const Navbar = () => {
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
                   <Link className="dropdown-item" to="/cachorros/racoes">
-                    Rações
+                    Rações e Petiscos
                   </Link>
                 </li>
                 <li>
@@ -209,7 +209,7 @@ const Navbar = () => {
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
                   <Link className="dropdown-item" to="/roedores/racoes">
-                    Ração
+                    Rações
                   </Link>
                 </li>
                 <li>
@@ -231,7 +231,7 @@ const Navbar = () => {
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
                   <Link className="dropdown-item" to="/peixes/racoes">
-                    Ração e Vitaminas
+                    Alimentação
                   </Link>
                 </li>
                 <li>
@@ -241,7 +241,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/peixes/enfeites">
-                    Plantas e Enfeites
+                    Decoração e Enfeites
                   </Link>
                 </li>
               </ul>

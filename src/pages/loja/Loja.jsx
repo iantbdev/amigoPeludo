@@ -6,14 +6,16 @@ import ProductActions from "../../components/AdminAcoes/ProdutoAcoes";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/reducers/cartSlice";
 import "./loja.scss";
-import { Outlet } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const Loja = ({ category }) => {
+const Loja = ({ category, subcategory }) => {
   const [products, setProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("titulo");
 
   const dispatch = useDispatch();
+
+  const { subcategory: urlSubcategory } = useParams();
 
   const getCurrentUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -123,12 +125,21 @@ const Loja = ({ category }) => {
           </Form.Select>
         </div>
         {user.email === "admin@gmail.com" && (
-          <ModalProduto category={category} OnSubmit={fetchProducts} />
+          <ModalProduto
+            category={category}
+            subcategory={subcategory}
+            OnSubmit={fetchProducts}
+          />
         )}
 
         <div className="produto-container">
           {sortedProducts
-            .filter((product) => product.categoria === category.toLowerCase())
+            .filter(
+              (product) =>
+                product.categoria === category.toLowerCase() &&
+                (!subcategory ||
+                  product.subcategoria === subcategory.toLowerCase())
+            )
             .map((product) => (
               <div className="produto" key={product.id}>
                 <img src={product.foto} alt="" />
@@ -155,7 +166,6 @@ const Loja = ({ category }) => {
             ))}
         </div>
       </div>
-      <Outlet />
     </div>
   );
 };

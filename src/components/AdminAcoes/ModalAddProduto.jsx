@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const ModalProduto = ({ category, OnSubmit }) => {
+const ModalProduto = ({ category, subcategory, OnSubmit }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newProduct, setNewProduct] = useState({
     marca: "",
@@ -11,6 +11,7 @@ const ModalProduto = ({ category, OnSubmit }) => {
     foto: "",
     preco: "",
     categoria: category.toLowerCase(),
+    subcategoria: subcategory,
   });
   const handleAddProductChange = (e) => {
     const { name, value } = e.target;
@@ -42,6 +43,7 @@ const ModalProduto = ({ category, OnSubmit }) => {
         foto: "",
         preco: "",
         categoria: category.toLowerCase(),
+        subcategoria: subcategory,
       });
       setShowAddModal(false);
       OnSubmit();
@@ -113,6 +115,24 @@ const ModalProduto = ({ category, OnSubmit }) => {
                 <option value="gato">Gato</option>
                 <option value="roedor">Roedores</option>
                 <option value="peixes">Peixes</option>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Subcategoria</Form.Label>
+              <Form.Control
+                as="select"
+                name="subcategoria"
+                value={newProduct.subcategoria}
+                onChange={handleAddProductChange}
+                required
+              >
+                <option value="racoes">Rações</option>
+                <option value="medicamentos">Medicamentos</option>
+                <option value="roupas">Roupas</option>
+                <option value="brinquedos">Brinquedos</option>
+                <option value="limpeza">Limpeza</option>
+                <option value="coleiras">Coleiras</option>
+                <option value="enfeites">Enfeites</option>
               </Form.Control>
             </Form.Group>
             <Button variant="primary" type="submit">

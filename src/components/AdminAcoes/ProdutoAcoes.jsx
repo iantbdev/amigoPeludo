@@ -95,7 +95,16 @@ const ProdutoAcoes = ({ product, onEdit, onDelete }) => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Form.Group controlId="formSubcategoria">
+              <Form.Label>Subcategoria</Form.Label>
+              <Form.Control
+                type="text"
+                name="subcategoria"
+                value={productToEdit.subcategoria}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Button className="mt-4" variant="primary" type="submit">
               Atualizar
             </Button>
           </Form>

@@ -9,10 +9,8 @@ import Login from "./pages/login/Login";
 import Registro from "./pages/registro/Registro";
 import "./App.css";
 import Layout from "./components/Layout";
-import GatoList from "./pages/loja/animais/GatoList";
-import CachorroList from "./pages/loja/animais/CachorroList";
-import RoedoresList from "./pages/loja/animais/RoedoresList";
-import PeixesList from "./pages/loja/animais/PeixesList";
+import Loja from "./pages/loja/Loja";
+import AnimalList from "./pages/loja/animais/AnimalList";
 import Carrinho from "./pages/carrinho/Carrinho";
 import Pagamento from "./pages/pagamento/Pagamento";
 import Conta from "./pages/conta/Conta";
@@ -44,36 +42,90 @@ function App() {
           path="/gatos"
           element={
             <Layout>
-              <GatoList />
+              <AnimalList />
             </Layout>
           }
         >
-          <Route path="racoes" element={<div>Racoes</div>} />
+          <Route index element={<Loja category="gato" />} />
+          <Route
+            path="racoes"
+            element={<Loja category="gato" subcategory="racoes" />}
+          />
+          <Route
+            path="medicamentos"
+            element={<Loja category="gato" subcategory="medicamentos" />}
+          />
+          <Route
+            path="roupas"
+            element={<Loja category="gato" subcategory="roupas" />}
+          />
         </Route>
         <Route
           path="/cachorros"
           element={
             <Layout>
-              <CachorroList />
+              <AnimalList />
             </Layout>
           }
-        />
+        >
+          <Route index element={<Loja category="cachorro" />} />
+          <Route
+            path="racoes"
+            element={<Loja category="cachorro" subcategory="racoes" />}
+          />
+          <Route
+            path="medicamentos"
+            element={<Loja category="cachorro" subcategory="medicamentos" />}
+          />
+          <Route
+            path="coleiras"
+            element={<Loja category="cachorro" subcategory="coleiras" />}
+          />
+        </Route>
         <Route
           path="/roedores"
           element={
             <Layout>
-              <RoedoresList />
+              <AnimalList />
             </Layout>
           }
-        />
+        >
+          <Route index element={<Loja category="roedor" />} />
+          <Route
+            path="racoes"
+            element={<Loja category="roedor" subcategory="racoes" />}
+          />
+          <Route
+            path="medicamentos"
+            element={<Loja category="roedor" subcategory="medicamentos" />}
+          />
+          <Route
+            path="brinquedos"
+            element={<Loja category="roedor" subcategory="brinquedos" />}
+          />
+        </Route>
         <Route
           path="/peixes"
           element={
             <Layout>
-              <PeixesList />
+              <AnimalList />
             </Layout>
           }
-        />
+        >
+          <Route index element={<Loja category="peixes" />} />
+          <Route
+            path="racoes"
+            element={<Loja category="peixes" subcategory="racoes" />}
+          />
+          <Route
+            path="limpeza"
+            element={<Loja category="peixes" subcategory="limpeza" />}
+          />
+          <Route
+            path="enfeites"
+            element={<Loja category="peixes" subcategory="enfeites" />}
+          />
+        </Route>
         <Route
           path="/contato"
           element={

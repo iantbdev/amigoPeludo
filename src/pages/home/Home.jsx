@@ -10,6 +10,7 @@ import BrinquedoGato from "../../assets/img/gato_brinquedo.svg";
 import ComidaCao from "../../assets/img/smalldog-710065 1.svg";
 import Servicos from "../../components/servicos/servicos";
 import Marcas from "../../components/marcas/Marcas";
+import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -44,23 +45,23 @@ const Home = () => {
           <h2>
             <span>Categorias </span>Em Destaque
           </h2>
-          <div class="top-categorias">
-            <div class="categorias">
+          <div className="top-categorias">
+            <Link className="categorias" to="/gatos/racoes">
               <img src={ComidaGato} alt="Comida de gato" />
               <h6>Comida para Gatos</h6>
-            </div>
-            <div class="categorias">
+            </Link>
+            <Link className="categorias" to="/cachorros/coleiras">
               <img src={BrinquedoCao} alt="" />
-              <h6>Brinquedo para Cães</h6>
-            </div>
-            <div class="categorias">
-              <img src={BrinquedoGato} alt="Brinquedo de gato" />
-              <h6>Brinquedo para Gatos</h6>
-            </div>
-            <div class="categorias">
+              <h6>Coleiras para Cães</h6>
+            </Link>
+            <Link className="categorias" to="/gatos/medicamentos">
+              <img src={BrinquedoGato} alt="Gato deitado" />
+              <h6>Medicamentos para Gatos</h6>
+            </Link>
+            <Link className="categorias" to="/cachorros/racoes">
               <img src={ComidaCao} alt="" />
               <h6>Comida para Cães</h6>
-            </div>
+            </Link>
           </div>
         </section>
 
