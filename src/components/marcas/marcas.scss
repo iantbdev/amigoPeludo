@@ -1,5 +1,4 @@
 .marcas {
-  // background-color: #ed5c01;
   height: 200px;
   text-align: center;
   border-top-left-radius: 20px;
@@ -24,9 +23,35 @@
       margin: 0 5px;
     }
   }
+
   .slick-slide {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    width: 97%;
+    height: 180px;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .image-wrapper {
+      img {
+        width: 80px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 150px;
+
+    .image-wrapper {
+      img {
+        width: 60px;
+      }
+    }
   }
 }

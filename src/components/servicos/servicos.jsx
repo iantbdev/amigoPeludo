@@ -28,21 +28,11 @@ const Servicos = () => {
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
-        className="w-90 mx-auto w-lg-80"
+        className="w-90 mx-auto w-lg-80 servicos"
       >
         {ServicosDados.map((item) => (
           <SwiperSlide key={item.title}>
             <div className="position-relative rounded d-flex flex-column servico-card">
-              <div
-                className="position-absolute w-100 h-100"
-                style={{
-                  backgroundImage: `url(${item.backgroundImage})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  top: 0,
-                  left: 0,
-                }}
-              />
               <div
                 className="position-absolute w-100 h-100 "
                 style={{ opacity: "0.1" }}
@@ -59,8 +49,8 @@ const Servicos = () => {
                     }}
                   />
                 </div>
-                <h1 className="fs-4">{item.title}</h1>
-                <p className="fs-5">{item.content}</p>
+                <h1>{item.title}</h1>
+                <p>{item.content}</p>
               </div>
             </div>
           </SwiperSlide>
