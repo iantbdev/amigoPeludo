@@ -1,0 +1,25 @@
+.navbar-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  
+    .logo {
+      width: 40px; /* Largura do ícone */
+      height: 40px; /* Altura do ícone */
+      margin-right: 10px; /* Espaço à direita do ícone */
+    }
+  
+    .navbar-brand {
+      font-size: 1.25rem; /* Tamanho do texto */
+      font-weight: 500; /* Peso da fonte */
+      color: #000; /* Cor do texto */
+      text-decoration: none; /* Remover sublinhado */
+    }
+  }
+  
