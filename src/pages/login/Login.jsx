@@ -48,9 +48,7 @@ const Login = () => {
 
   return (
     <section className="card-login" style={{ backgroundColor: "#eee" }}>
-      <div className="back-button" onClick={handleBackButtonClick}>
-        <i className="fas fa-arrow-left"></i>
-      </div>
+     
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
