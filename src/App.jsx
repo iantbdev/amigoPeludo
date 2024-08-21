@@ -47,7 +47,9 @@ function App() {
               <GatoList />
             </Layout>
           }
-        />
+        >
+          <Route path="racoes" element={<div>Racoes</div>} />
+        </Route>
         <Route
           path="/cachorros"
           element={

@@ -2,13 +2,13 @@ import "./contato.scss";
 
 const Contato = () => {
   return (
-    <section className="container my-5">
-      <div className="text-center mb-4">
-        <h2 className="display-4">
-          <span style={{ color: "#f63d3d" }}>Fale Conosco</span>
-        </h2>
-      </div>
+    <section className="container contato my-2">
       <div className="row justify-content-center">
+        <div className="text-center">
+          <h3 className="display-5">
+            <span>Fale</span> Conosco
+          </h3>
+        </div>
         <div className="col-md-6">
           <div className="border p-4 rounded bg-light mb-4">
             <p className="mb-2">
@@ -17,7 +17,7 @@ const Contato = () => {
             </p>
             <p className="mb-2">
               <i className="me-2"></i>
-              <strong>WhatsApp:</strong> 2345-678
+              <strong>WhatsApp:</strong> +77 8678-7879
             </p>
             <p className="mb-0">
               <i className="me-2"></i>
@@ -26,7 +26,7 @@ const Contato = () => {
           </div>
           <div className="text-center mb-4">
             <h3 className="display-5">
-              <span style={{ color: "#f63d3d" }}>Nossa</span> Localização Física
+              <span>Nossa</span> Localização Física
             </h3>
           </div>
           <div className="ratio ratio-16x9">

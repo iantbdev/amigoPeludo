@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import "./home.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Banner from "../../assets/banner.webp";
-import Banner2 from "../../assets/banner-2.webp";
 import Banner3 from "../../assets/banner3.webp";
 import BannerContact from "../../assets/BannerContact.png";
 import ComidaGato from "../../assets/img/comida_gato.svg";
@@ -38,9 +37,6 @@ const Home = () => {
           </SwiperSlide>
           <SwiperSlide>
             <img src={Banner} alt="Banner" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={Banner2} alt="Banner2" />
           </SwiperSlide>
         </Swiper>
 

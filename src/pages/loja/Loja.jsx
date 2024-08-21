@@ -6,6 +6,7 @@ import ProductActions from "../../components/AdminAcoes/ProdutoAcoes";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/reducers/cartSlice";
 import "./loja.scss";
+import { Outlet } from "react-router-dom";
 
 const Loja = ({ category }) => {
   const [products, setProducts] = useState([]);
@@ -154,6 +155,7 @@ const Loja = ({ category }) => {
             ))}
         </div>
       </div>
+      <Outlet />
     </div>
   );
 };

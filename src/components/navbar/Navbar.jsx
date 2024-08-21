@@ -164,17 +164,17 @@ const Navbar = () => {
               </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <Link className="dropdown-item" to="/home">
+                  <Link className="dropdown-item" to="/gatos/racoes">
                     Ração
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/home">
+                  <Link className="dropdown-item" to="/gatos/medicamentos">
                     Medicamentos
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/home">
+                  <Link className="dropdown-item" to="/gatos/roupas">
                     Roupas
                   </Link>
                 </li>
@@ -186,18 +186,18 @@ const Navbar = () => {
               </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <Link className="dropdown-item" to="/cachorros">
-                    Cachorros
+                  <Link className="dropdown-item" to="/cachorros/racoes">
+                    Rações
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/gatos">
-                    Gatos
+                  <Link className="dropdown-item" to="/cachorros/medicamentos">
+                    Medicamentos
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/roedores">
-                    Roedores
+                  <Link className="dropdown-item" to="/cachorros/coleiras">
+                    Coleiras
                   </Link>
                 </li>
               </ul>
@@ -208,17 +208,17 @@ const Navbar = () => {
               </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <Link className="dropdown-item" to="/cachorros">
+                  <Link className="dropdown-item" to="/roedores/racoes">
                     Ração
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/gatos">
+                  <Link className="dropdown-item" to="/roedores/medicamentos">
                     Medicamentos
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/roedores">
+                  <Link className="dropdown-item" to="/roedores/brinquedos">
                     Brinquedos
                   </Link>
                 </li>
@@ -230,17 +230,17 @@ const Navbar = () => {
               </Link>
               <ul className="dropdown-menu" aria-labelledby="dropdownPets">
                 <li>
-                  <Link className="dropdown-item" to="/cachorros">
+                  <Link className="dropdown-item" to="/peixes/racoes">
                     Ração e Vitaminas
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/gatos">
+                  <Link className="dropdown-item" to="/peixes/limpeza">
                     Manutenção e Limpeza
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/roedores">
+                  <Link className="dropdown-item" to="/peixes/enfeites">
                     Plantas e Enfeites
                   </Link>
                 </li>
