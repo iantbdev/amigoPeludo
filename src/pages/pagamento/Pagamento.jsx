@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import EditOrderModal from "../../components/EditOrderAddress/EditOrderModal";
 import "./pagamento.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { emptyCart } from "../../store/reducers/cartSlice";
 const Pagamento = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [currentUser, setCurrentUser] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("card");
@@ -79,6 +83,9 @@ const Pagamento = () => {
         }
       );
       alert("Compra realizada!");
+
+      dispatch(emptyCart());
+
       setFormData({
         cidade: "",
         estado: "",
@@ -89,7 +96,7 @@ const Pagamento = () => {
     } catch (error) {
       console.error("Houve um erro", error);
     }
-    window.location.href = "/home";
+    navigate("/home");
   };
 
   const updateOrder = async (orderId, updatedOrder) => {
