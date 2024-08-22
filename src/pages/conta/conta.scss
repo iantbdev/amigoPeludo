@@ -37,7 +37,7 @@
         border-radius: 4px;
         font-size: 16px;
         width: 100%;
-        box-sizing: border-box; // Inclui o padding e a borda na largura total
+        box-sizing: border-box;
 
         &:focus {
           border-color: #007bff;
