@@ -8,10 +8,11 @@ import {
   faCircleUser,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   const cartItems = useSelector((state) => state.cart.cart);
@@ -27,7 +28,7 @@ const Navbar = () => {
     localStorage.removeItem("user");
     setLoggedInUser(null);
     setTimeout(() => {
-      window.location.reload();
+      navigate("/home");
     }, 1000);
   };
 
