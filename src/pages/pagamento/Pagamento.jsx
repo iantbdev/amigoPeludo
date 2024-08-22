@@ -29,9 +29,6 @@ const Pagamento = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     setCurrentUser(user);
 
-    const product = JSON.parse(localStorage.getItem("selectedProduct"));
-    setSelectedProduct(product);
-
     if (user) {
       fetchUserOrders(user.email);
     }

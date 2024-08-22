@@ -9,6 +9,7 @@ const EditOrderModal = ({ show, handleClose, handleSave, addressData }) => {
     rua: "",
     cep: "",
     orderId: "",
+    saveAddress: false,
   });
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const EditOrderModal = ({ show, handleClose, handleSave, addressData }) => {
         cep: addressData.cep || "",
         orderId: addressData.id || "",
         userEmail: user.email,
+        saveAddress: true,
       });
     }
   }, [addressData]);
