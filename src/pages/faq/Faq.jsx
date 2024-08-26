@@ -25,10 +25,7 @@ const Faq = () => {
                     dúvida. Se você precisar de ajuda, entre em contato via
                     e-mail ou preencha o formulário dessa página.
                   </p>
-                  <div
-                    className="accordion accordion-flush"
-                    id="accordionExample"
-                  >
+                  <div className="accordion accordion-flush">
                     <div className="accordion-item">
                       <h2 className="accordion-header" id="headingOne">
                         <button

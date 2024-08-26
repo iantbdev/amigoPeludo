@@ -1,3 +1,7 @@
+.accordion-button {
+  z-index: 1;
+}
+
 .faq-form-section {
   .faq-form-container {
     max-width: 800px;
@@ -28,7 +32,7 @@
       }
 
       textarea {
-        resize: vertical; // Permite redimensionar verticalmente
+        resize: vertical;
       }
     }
 
